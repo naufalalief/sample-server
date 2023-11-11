@@ -2,7 +2,10 @@ openapi: "3.0.3"
 info:
   title: Todolist RESTful API
   version: "1"
-  description: Todolist RESTful API with Auth"
+  description: Todolist RESTful API with Auth
+  contact:
+    name: "vaellouisse"
+    email: "vaellouisse@gmail.com"
   license:
     name: "APACHE 2.0"
     url: "https://www.apache.org/licenses/LICENSE-2.0"
@@ -143,14 +146,12 @@ paths:
                       title: "Makan"
                       description: "Makan siang"
                       status: "Belum"
-                      due_date: "2021-05-30T16:00:00.000Z"
                       createdAt: "2021-05-30T16:00:00.000Z"
                       updatedAt: "2021-05-30T16:00:00.000Z"
                     - id: 2
                       title: "Minum"
                       description: "Minum siang"
                       status: "Belum"
-                      due_date: "2021-05-30T16:00:00.000Z"
                       createdAt: "2021-05-30T16:00:00.000Z"
                       updatedAt: "2021-05-30T16:00:00.000Z"
         400:
@@ -253,7 +254,6 @@ paths:
                     title: "Makan"
                     description: "Makan siang"
                     status: "Belum"
-                    due_date: "2021-05-30T16:00:00.000Z"
                     createdAt: "2021-05-30T16:00:00.000Z"
                     updatedAt: "2021-05-30T16:00:00.000Z"
         400:
