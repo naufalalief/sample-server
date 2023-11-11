@@ -23,7 +23,10 @@ if (swaggerDocument) {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
 app.get("/", (req, res) => {
-  res.send("selamat datang di server todo sequelize");
+  res.send(`
+    <h1>Selamat datang di server todo sequelize</h1>
+    <a href="/docs">Lihat dokumentasi API</a>
+  `);
 });
 
 app.use(express.json());

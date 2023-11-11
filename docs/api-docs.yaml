@@ -91,10 +91,10 @@ paths:
                   type: "string"
                   description: "Email of user"
               example:
-                name: "Agus Stiawan"
-                username: "aguezzstiawan"
-                password: "agustampan123"
-                email: "agustampan@gmail.com"
+                name: "Adam Prasetya"
+                username: "adamsenzoe"
+                password: "kalongetikjangansambilnangis"
+                email: "adam.senzoe@gmail.com"
 
       responses:
         200:
