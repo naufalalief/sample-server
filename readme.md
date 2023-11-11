@@ -1,0 +1,1 @@
+# hanya server, jangan berharap lebih
