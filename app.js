@@ -20,11 +20,11 @@ const indexroute = require("./routes");
 
 app.use(cors());
 if (swaggerDocument) {
-  app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
-// app.get("/", (req, res) => {
-//   res.send("selamat datang di server todo sequelize");
-// });
+app.get("/", (req, res) => {
+  res.send("selamat datang di server todo sequelize");
+});
 
 app.use(express.json());
 app.use(indexroute);
