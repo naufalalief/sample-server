@@ -1,0 +1,414 @@
+openapi: "3.0.3"
+info:
+  title: Todolist RESTful API
+  version: "1"
+  description: Todolist RESTful API with Auth"
+  license:
+    name: "APACHE 2.0"
+    url: "https://www.apache.org/licenses/LICENSE-2.0"
+servers:
+  - url: "http://localhost:3000"
+    description: "TodoList API Server"
+paths:
+  /auth/login:
+    post:
+      tags:
+        - "Auth Endpoint"
+      summary: "Login to receive token"
+      description: "Login by username and password to get token to access todo list"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                username:
+                  type: "string"
+                  description: "Username to login"
+                password:
+                  type: "string"
+                  description: "Password to login"
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  token:
+                    type: "object"
+                    properties:
+                      message:
+                        type: "string"
+                        description: "Message of login"
+                      token:
+                        type: "string"
+                        description: "Token to access todo list"
+                      expired:
+                        type: "string"
+                        description: "Expired time of token"
+                    example:
+                      message: "Login successful"
+                      token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik5hdWZhbCBBbGllZiIsInVzZXJuYW1lIjoibmF1ZmFsYWxpZWYwODciLCJlbWFpbCI6Im5hdWZhbGFsaWVmMDg3QGdtYWlsLmNvbSIsImlhdCI6MTYyMjQ0NjQ0NiwiZXhwIjoxNj"
+                      expired: "2021-05-30T16:00:00.000Z"
+        400:
+          description: Login failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "Login failed"
+  /auth/register:
+    post:
+      tags:
+        - "Auth Endpoint"
+      summary: "Register account"
+      description: "Register account by filling name, username, password, and email to access login and todo list"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                  description: "Name of user"
+                username:
+                  type: "string"
+                  description: "Username of user"
+                password:
+                  type: "string"
+                  description: "Password of user"
+                email:
+                  type: "string"
+                  description: "Email of user"
+              example:
+                name: "Agus Stiawan"
+                username: "aguezzstiawan"
+                password: "agustampan123"
+                email: "agustampan@gmail.com"
+
+      responses:
+        200:
+          description: Register successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message from server"
+                example:
+                  message: "Register successful"
+        400:
+          description: Register failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "Register failed"
+  /todos:
+    get:
+      tags:
+        - "TodoList Endpoint"
+      summary: "Get all todos by login user"
+      description: "Get all todos by login user"
+      security:
+        - TodoListAuth: []
+      responses:
+        200:
+          description: Get todos successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "get all data by current user"
+                  data:
+                    - id: 1
+                      title: "Makan"
+                      description: "Makan siang"
+                      status: "Belum"
+                      due_date: "2021-05-30T16:00:00.000Z"
+                      createdAt: "2021-05-30T16:00:00.000Z"
+                      updatedAt: "2021-05-30T16:00:00.000Z"
+                    - id: 2
+                      title: "Minum"
+                      description: "Minum siang"
+                      status: "Belum"
+                      due_date: "2021-05-30T16:00:00.000Z"
+                      createdAt: "2021-05-30T16:00:00.000Z"
+                      updatedAt: "2021-05-30T16:00:00.000Z"
+        400:
+          description: Get todos failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "You dont have access to this page(s)"
+    post:
+      summary: "Create new todo"
+      description: "Create new todo by current user login"
+      tags:
+        - "TodoList Endpoint"
+      security:
+        - TodoListAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                task:
+                  type: "string"
+                  description: "Title of todo"
+                isdone:
+                  type: "boolean"
+                  description: "Status of todo"
+              example:
+                task: "Makan"
+                isdone: false
+      responses:
+        200:
+          description: Create new todo successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message from server"
+                example:
+                  message: "Create new data successful"
+                  data:
+                    id: 1
+                    title: "Makan"
+                    status: false
+                    createdAt: "2021-05-30T16:00:00.000Z"
+                    updatedAt: "2021-05-30T16:00:00.000Z"
+        400:
+          description: Create new todo failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "You dont have access to this page(s)"
+
+  /todos/{id}:
+    get:
+      summary: "Get todo by id"
+      description: "Get todo by id"
+      tags:
+        - "TodoList Endpoint"
+      security:
+        - TodoListAuth: []
+      parameters:
+        - name: "id"
+          description: "Id of todo"
+          in: path
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        200:
+          description: Get todo by id successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message from server"
+                example:
+                  message: "Get data by id successful"
+                  data:
+                    id: 1
+                    title: "Makan"
+                    description: "Makan siang"
+                    status: "Belum"
+                    due_date: "2021-05-30T16:00:00.000Z"
+                    createdAt: "2021-05-30T16:00:00.000Z"
+                    updatedAt: "2021-05-30T16:00:00.000Z"
+        400:
+          description: Get todo by id failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "You dont have access to this page(s)"
+    put:
+      summary: "Update todo by id"
+      description: "Update todo by id"
+      tags:
+        - "TodoList Endpoint"
+      security:
+        - TodoListAuth: []
+      parameters:
+        - name: "id"
+          description: "Id of todo"
+          in: path
+          required: true
+          schema:
+            type: "integer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                task:
+                  type: "string"
+                  description: "Title of todo"
+                isdone:
+                  type: "boolean"
+                  description: "Status of todo"
+              example:
+                task: "Makan"
+                isdone: true
+      responses:
+        200:
+          description: Update todo by id successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message from server"
+                example:
+                  message: "Update data by id successful"
+                  data:
+                    id: 1
+                    title: "Makan"
+                    status: true
+                    createdAt: "2021-05-30T16:00:00.000Z"
+                    updatedAt: "2021-05-30T16:00:00.000Z"
+        400:
+          description: Update todo by id failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "You dont have access to this page(s)"
+    delete:
+      tags:
+        - "TodoList Endpoint"
+      summary: "Delete todo by todo id"
+      description: "Delete todo by todo id"
+      security:
+        - TodoListAuth: []
+      parameters:
+        - name: "id"
+          description: "Id of todo"
+          in: path
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        200:
+          description: Delete todo by todo id successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message from server"
+                example:
+                  message: "Delete data by id successful"
+        400:
+          description: Delete todo by todo id failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "You dont have access to this page(s)"
+
+components:
+  securitySchemes:
+    TodoListAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Login:
+      type: "object"
+      properties:
+        username:
+          type: "string"
+          description: "Username to login"
+        password:
+          type: "string"
+          description: "Password to login"
+    Register:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "Name of user"
+        username:
+          type: "string"
+          description: "Username of user"
+        password:
+          type: "string"
+          description: "Password of user"
+        email:
+          type: "string"
+          description: "Email of user"
+    Todolist:
+      type: "object"
+      properties:
+        task:
+          type: "string"
+          description: "Title of todo"
+        isdone:
+          type: "boolean"
+          description: "Status of todo"
+        id_user:
+          type: "integer"
+          description: "Id of current user"

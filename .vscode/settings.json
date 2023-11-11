@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "openapi:v3": [
+      "file:///d%3A/project/todosequelize/docs/api-docs.yml",
+      "file:///d%3A/project/todosequelize/docs/api-docs.yaml"
+    ]
+  }
+}
