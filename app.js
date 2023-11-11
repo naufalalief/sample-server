@@ -18,7 +18,11 @@ const cors = require("cors");
 
 const indexroute = require("./routes");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://todos-apppal.netlify.app/",
+  })
+);
 if (swaggerDocument) {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
