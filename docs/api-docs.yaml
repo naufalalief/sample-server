@@ -10,7 +10,7 @@ info:
     name: "APACHE 2.0"
     url: "https://www.apache.org/licenses/LICENSE-2.0"
 servers:
-  - url: "https://vast-gray-prawn-tam.cyclic.app/"
+  - url: "https://api-tdlst-plpnm.cyclic.app/"
     description: "TodoList API Server"
 paths:
   /auth/login:
