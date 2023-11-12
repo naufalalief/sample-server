@@ -29,5 +29,13 @@ const authMiddleware = (req, res, next) => {
     });
   }
 };
-
-module.exports = authMiddleware;
+const isAdmin = (req, res, next) => {
+  if (req.payload && req.payload.level === "admin") {
+    next();
+  } else {
+    return res.status(403).json({
+      message: "Forbidden",
+    });
+  }
+};
+module.exports = { authMiddleware, isAdmin };
