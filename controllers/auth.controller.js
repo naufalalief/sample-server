@@ -23,6 +23,7 @@ module.exports = {
             name: login.name,
             username: login.username,
             id: login.id,
+            id_level: login.id_level,
           },
           process.env.JWT_KEY,
           {
@@ -36,7 +37,7 @@ module.exports = {
           userid: login.id,
           username: login.username,
           name: login.name,
-          level: login.id_level,
+          id_level: login.id_level,
           token: token,
           expiresIn: expirationDate,
         });
