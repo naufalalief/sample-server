@@ -32,6 +32,8 @@ module.exports = {
         expirationDate.setDate(expirationDate.getDate() + 1);
         res.status(200).json({
           message: "Login Succesfully",
+          userid: login.id,
+          username: login.username,
           token: token,
           expiresIn: expirationDate,
         });
