@@ -69,6 +69,7 @@ module.exports = {
       const data = await User.destroy({
         where: {
           id,
+          id_level: 2,
         },
       });
       if (!data) {
