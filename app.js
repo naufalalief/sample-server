@@ -20,7 +20,7 @@ const indexroute = require("./routes");
 
 app.use(
   cors({
-    origin: "https://todos-apppal.netlify.app/",
+    origin: "https://todos-apppal.netlify.app",
     optionsSuccessStatus: 200,
   })
 );
