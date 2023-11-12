@@ -21,6 +21,7 @@ const indexroute = require("./routes");
 app.use(
   cors({
     origin: "https://todos-apppal.netlify.app/",
+    optionsSuccessStatus: 200,
   })
 );
 if (swaggerDocument) {
