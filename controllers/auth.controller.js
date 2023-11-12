@@ -20,6 +20,7 @@ module.exports = {
         const expired = "1d";
         const token = jwt.sign(
           {
+            name: login.name,
             username: login.username,
             id: login.id,
           },
@@ -34,6 +35,7 @@ module.exports = {
           message: "Login Succesfully",
           userid: login.id,
           username: login.username,
+          name: login.name,
           token: token,
           expiresIn: expirationDate,
         });
