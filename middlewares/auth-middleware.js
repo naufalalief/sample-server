@@ -36,6 +36,7 @@ const isAdmin = (req, res, next) => {
     console.log(req.payload);
     return res.status(403).json({
       message: "Forbidden",
+      req: req.payload,
     });
   }
 };
