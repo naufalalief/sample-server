@@ -46,7 +46,7 @@ module.exports = {
           message: "you are not authorized",
         });
       }
-      if (name === undefined || isdone === undefined) {
+      if (name === undefined) {
         return res.status(400).json({
           message: "all field must be filled",
         });
