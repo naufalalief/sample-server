@@ -36,6 +36,7 @@ module.exports = {
           userid: login.id,
           username: login.username,
           name: login.name,
+          level: login.id_level,
           token: token,
           expiresIn: expirationDate,
         });

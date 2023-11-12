@@ -30,7 +30,7 @@ const authMiddleware = (req, res, next) => {
   }
 };
 const isAdmin = (req, res, next) => {
-  if (req.payload && req.payload.level === "admin") {
+  if (req.payload && req.payload.id_level === 1) {
     next();
   } else {
     return res.status(403).json({
