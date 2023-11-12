@@ -370,10 +370,13 @@ paths:
                     description: "Message of error"
                 example:
                   message: "You dont have access to this page(s)"
+
   /users:
     get:
       tags:
         - "User Endpoint"
+      security:
+        - TodoListAuth: []
       summary: "Get all users"
       description: "Get all users"
       responses:
@@ -395,6 +398,8 @@ paths:
       tags:
         - "User Endpoint"
       summary: "Get user by id"
+      security:
+        - TodoListAuth: []
       description: "Get user by id"
       parameters:
         - name: "id"
@@ -428,6 +433,8 @@ paths:
       tags:
         - "User Endpoint"
       summary: "Delete user by id"
+      security:
+        - TodoListAuth: []
       description: "Delete user by id"
       parameters:
         - name: "id"
