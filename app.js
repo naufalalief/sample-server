@@ -20,8 +20,7 @@ const indexroute = require("./routes");
 
 app.use(
   cors({
-    origin: ["https://todos-apppal.netlify.app/", "http://localhost:5173"],
-
+    origin: "https://todos-apppal.netlify.app/",
   })
 );
 if (swaggerDocument) {
