@@ -95,10 +95,10 @@ paths:
                   type: "string"
                   description: "Email of user"
               example:
-                name: "Adam Prasetya"
-                username: "adamsenzoe"
-                password: "kalongetikjangansambilnangis"
-                email: "adam.senzoe@gmail.com"
+                name: "Xia Ekavira"
+                username: "xiaekavira"
+                password: "xiaekavira123"
+                email: "xiaekavira@gmail.com"
 
       responses:
         200:
@@ -365,8 +365,10 @@ paths:
                   message: "get all data"
                   data:
                     - id: 1
-                      name: "Adam Prasetya"
-                      username: "adamsenzoe"
+                      name: "Xia Ekavira"
+                      username: "xiaekavira"
+                      password: "xiaekavira123"
+                      email: "xiaekavira@gmail.com"
 
   /users/{id}:
     get:
@@ -394,8 +396,10 @@ paths:
                   message: "get data by id"
                   data:
                     id: 1
-                    name: "Adam Prasetya"
-                    username: "adamsenzoe"
+                    name: "Xia Ekavira"
+                    username: "xiaekavira"
+                    password: "xiaekavira123"
+                    email: "xiaekavira@gmail.com"
         400:
           description: Get user by id failed
           content:
