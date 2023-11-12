@@ -264,7 +264,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Todolist"
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+                  description: "Title of todo"
+                isdone:
+                  type: "boolean"
+                  description: "Status of todo"
+              example:
+                name: "Makan"
+                isdone: true
       responses:
         200:
           description: Update todo by id successful
