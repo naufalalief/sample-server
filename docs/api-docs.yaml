@@ -180,14 +180,14 @@ paths:
             schema:
               type: "object"
               properties:
-                task:
+                name:
                   type: "string"
                   description: "Title of todo"
                 isdone:
                   type: "boolean"
                   description: "Status of todo"
               example:
-                task: "Makan"
+                name: "Makan"
                 isdone: false
       responses:
         200:
@@ -289,14 +289,14 @@ paths:
             schema:
               type: "object"
               properties:
-                task:
+                name:
                   type: "string"
                   description: "Title of todo"
                 isdone:
                   type: "boolean"
                   description: "Status of todo"
               example:
-                task: "Makan"
+                name: "Makan"
                 isdone: true
       responses:
         200:
@@ -403,7 +403,7 @@ components:
     Todolist:
       type: "object"
       properties:
-        task:
+        name:
           type: "string"
           description: "Title of todo"
         isdone:

@@ -39,21 +39,21 @@ module.exports = {
     try {
       const { id } = req.params;
       const id_user = req.payload.id;
-      const { task, isdone } = req.body;
-      console.log(id, id_user, task, isdone)
+      const { name, isdone } = req.body;
+      console.log(id, id_user, name, isdone)
       if (req.payload.id !== id_user) {
         return res.status(401).json({
           message: "you are not authorized",
         });
       }
-      if (task === undefined || isdone === undefined) {
+      if (name === undefined || isdone === undefined) {
         return res.status(400).json({
           message: "all field must be filled",
         });
       }
       const data = await Todo.update(
         {
-          task,
+          name,
           isdone,
           id_user,
         },
@@ -95,15 +95,15 @@ module.exports = {
   },
   createData: async (req, res) => {
     try {
-      const { task, isdone = false } = req.body;
-      if (!task) {
+      const { name, isdone = false } = req.body;
+      if (!name) {
         return res.status(400).json({
           message: "all field must be filled",
         });
       }
       const id_user = req.payload.id;
       const data = await Todo.create({
-        task,
+        name,
         isdone,
         id_user,
       });

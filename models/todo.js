@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Todo.init({
-    task: DataTypes.STRING,
+    name: DataTypes.STRING,
     isdone: DataTypes.BOOLEAN,
     id_user: DataTypes.INTEGER
   }, {

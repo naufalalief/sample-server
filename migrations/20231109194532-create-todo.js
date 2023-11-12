@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      task: {
+      name: {
         type: Sequelize.STRING
       },
       isdone: {
