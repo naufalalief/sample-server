@@ -10,7 +10,7 @@ route.get("/", (req, res) => {
   });
 });
 
-route.use("/users", isAdmin, userRoute);
+route.use("/users", authMiddleware, isAdmin, userRoute);
 route.use("/todos", authMiddleware, todoRoute);
 route.use("/auth", require("./auth.route"));
 module.exports = route;
