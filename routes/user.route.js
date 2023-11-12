@@ -5,6 +5,6 @@ const { getAllData, getDataByID, updateData, binData, createData } = require("..
 route.get('/', getAllData)
 route.get('/:id', getDataByID)
 route.delete('/:id', binData)
-
+route.put('/:id', updateData)
 
 module.exports = route;

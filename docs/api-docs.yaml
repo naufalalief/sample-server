@@ -140,22 +140,7 @@ paths:
           content:
             application/json:
               schema:
-                type: "object"
-                example:
-                  message: "get all data by current user"
-                  data:
-                    - id: 1
-                      title: "Makan"
-                      description: "Makan siang"
-                      status: "Belum"
-                      createdAt: "2021-05-30T16:00:00.000Z"
-                      updatedAt: "2021-05-30T16:00:00.000Z"
-                    - id: 2
-                      title: "Minum"
-                      description: "Minum siang"
-                      status: "Belum"
-                      createdAt: "2021-05-30T16:00:00.000Z"
-                      updatedAt: "2021-05-30T16:00:00.000Z"
+                $ref: "#/components/schemas/Todolist"
         400:
           description: Get todos failed
           content:
@@ -180,17 +165,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              properties:
-                name:
-                  type: "string"
-                  description: "Title of todo"
-                isdone:
-                  type: "boolean"
-                  description: "Status of todo"
-              example:
-                name: "Makan"
-                isdone: false
+              $ref: "#/components/schemas/Todolist"
       responses:
         200:
           description: Create new todo successful
@@ -289,17 +264,7 @@ paths:
         content:
           application/json:
             schema:
-              type: "object"
-              properties:
-                name:
-                  type: "string"
-                  description: "Title of todo"
-                isdone:
-                  type: "boolean"
-                  description: "Status of todo"
-              example:
-                name: "Makan"
-                isdone: true
+              $ref: "#/components/schemas/Todolist"
       responses:
         200:
           description: Update todo by id successful
@@ -429,6 +394,50 @@ paths:
                 type: "object"
                 example:
                   message: "get data by id failed"
+
+    put:
+      tags:
+        - "User Endpoint"
+      summary: "Update user by id"
+      security:
+        - TodoListAuth: []
+      description: "Update user by id"
+      parameters:
+        - name: "id"
+          description: "Id of user"
+          in: path
+          required: true
+          schema:
+            type: "integer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        200:
+          description: Update user by id successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "update data by id"
+                  data:
+                    id: 1
+                    name: "Eren Jeager"
+                    username: "erenjeager"
+                    password: "rumbling123"
+                    email: "jeagerist@gmail.com"
+        400:
+          description: Update user by id failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "update data by id failed"
     delete:
       tags:
         - "User Endpoint"
@@ -504,3 +513,18 @@ components:
         id_user:
           type: "integer"
           description: "Id of current user"
+    User:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "Name of user"
+        username:
+          type: "string"
+          description: "Username of user"
+        password:
+          type: "string"
+          description: "Password of user"
+        email:
+          type: "string"
+          description: "Email of user"
