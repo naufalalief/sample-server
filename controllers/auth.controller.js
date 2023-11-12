@@ -69,7 +69,7 @@ module.exports = {
     let garem = 10;
     let hash = bcrypt.hashSync(password, garem);
     password = hash;
-    User.create({
+    await User.create({
       name,
       username,
       email,
