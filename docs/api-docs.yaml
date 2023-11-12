@@ -68,6 +68,7 @@ paths:
                     description: "Message of error"
                 example:
                   message: "Login failed"
+
   /auth/register:
     post:
       tags:
@@ -124,6 +125,7 @@ paths:
                     description: "Message of error"
                 example:
                   message: "Register failed"
+
   /todos:
     get:
       tags:
@@ -368,6 +370,89 @@ paths:
                     description: "Message of error"
                 example:
                   message: "You dont have access to this page(s)"
+  /users:
+    get:
+      tags:
+        - "User Endpoint"
+      summary: "Get all users"
+      description: "Get all users"
+      responses:
+        200:
+          description: Get users successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "get all data"
+                  data:
+                    - id: 1
+                      name: "Adam Prasetya"
+                      username: "adamsenzoe"
+
+  /users/{id}:
+    get:
+      tags:
+        - "User Endpoint"
+      summary: "Get user by id"
+      description: "Get user by id"
+      parameters:
+        - name: "id"
+          description: "Id of user"
+          in: path
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        200:
+          description: Get user by id successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "get data by id"
+                  data:
+                    id: 1
+                    name: "Adam Prasetya"
+                    username: "adamsenzoe"
+        400:
+          description: Get user by id failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "get data by id failed"
+    delete:
+      tags:
+        - "User Endpoint"
+      summary: "Delete user by id"
+      description: "Delete user by id"
+      parameters:
+        - name: "id"
+          description: "Id of user"
+          in: path
+          required: true
+          schema:
+            type: "integer"
+      responses:
+        200:
+          description: Delete user by id successful
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "delete data by id"
+        400:
+          description: Delete user by id failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                example:
+                  message: "delete data by id failed"
 
 components:
   securitySchemes:
