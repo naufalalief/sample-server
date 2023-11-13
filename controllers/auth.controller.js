@@ -20,6 +20,7 @@ module.exports = {
         const expired = "1d";
         const token = jwt.sign(
           {
+            username: login.username,
             id_user: login.id,
             lastChanged: login.updatedAt,
           },
