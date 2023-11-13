@@ -118,6 +118,11 @@ module.exports = {
         });
       }
       const id_user = req.payload.id;
+      if (!id_user) {
+        return res.status(401).json({
+          message: "you are not authorized",
+        });
+      }
       const data = await Todo.create({
         name,
         isdone,
