@@ -1,6 +1,6 @@
 "use strict";
 const bcrypt = require("bcrypt");
-const dotenv = require("dotenv");
+require("dotenv").config();
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
