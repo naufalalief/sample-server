@@ -1,5 +1,5 @@
 const { User } = require("../models");
-
+const { Todo } = require("../models");
 module.exports = {
   getAllData: async (req, res) => {
     try {
@@ -72,6 +72,11 @@ module.exports = {
           id_level: 2,
         },
       });
+      const data2 = await Todo.destroy({
+        where: {
+          id_user: id,
+        },
+      });
       if (!data) {
         res.status(404).send({
           message: "data not found",
@@ -80,6 +85,7 @@ module.exports = {
         res.status(200).send({
           message: "delete data",
           data,
+          data2,
         });
       }
     } catch (error) {
