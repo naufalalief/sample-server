@@ -1,6 +1,17 @@
 const { Todo } = require("../models");
 
 module.exports = {
+  getAllDatas: async (req, res) => {
+    try {
+      const data = await Todo.findAll();
+      res.status(200).json({
+        message: "get all data",
+        data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
   getAllData: async (req, res) => {
     try {
       const userId = req.payload.id;
@@ -40,7 +51,7 @@ module.exports = {
       const { id } = req.params;
       const id_user = req.payload.id;
       const { name, isdone } = req.body;
-      console.log(id, id_user, name, isdone)
+      console.log(id, id_user, name, isdone);
       if (req.payload.id !== id_user) {
         return res.status(401).json({
           message: "you are not authorized",
@@ -51,7 +62,7 @@ module.exports = {
           message: "all field must be filled",
         });
       }
-      const data = await Todo.update(
+      await Todo.update(
         {
           name,
           isdone,
@@ -65,7 +76,12 @@ module.exports = {
       );
       res.status(200).json({
         message: "data updated successfully",
-        data: data,
+        data: {
+          id,
+          name,
+          isdone,
+          id_user,
+        },
       });
     } catch (error) {
       console.log(error);
@@ -102,6 +118,11 @@ module.exports = {
         });
       }
       const id_user = req.payload.id;
+      if (!id_user) {
+        return res.status(401).json({
+          message: "you are not authorized",
+        });
+      }
       const data = await Todo.create({
         name,
         isdone,

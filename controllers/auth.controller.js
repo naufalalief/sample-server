@@ -22,8 +22,9 @@ module.exports = {
           {
             name: login.name,
             username: login.username,
-            id: login.id,
+            id_user: login.id,
             id_level: login.id_level,
+            lastChanged: login.updatedAt,
           },
           process.env.JWT_KEY,
           {
@@ -34,7 +35,7 @@ module.exports = {
         expirationDate.setDate(expirationDate.getDate() + 1);
         res.status(200).json({
           message: "Login Succesfully",
-          userid: login.id,
+          id_user: login.id,
           username: login.username,
           name: login.name,
           id_level: login.id_level,

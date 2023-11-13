@@ -33,7 +33,6 @@ const isAdmin = (req, res, next) => {
   if (req.payload && req.payload.id_level === 1) {
     next();
   } else {
-    console.log(req.payload);
     return res.status(403).json({
       message: "Forbidden",
       req: req.payload,
