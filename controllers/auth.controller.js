@@ -22,7 +22,6 @@ module.exports = {
           {
             name: login.name,
             username: login.username,
-            id: login.id,
             id_level: login.id_level,
             lastChanged: login.updatedAt,
           },
@@ -35,9 +34,8 @@ module.exports = {
         expirationDate.setDate(expirationDate.getDate() + 1);
         res.status(200).json({
           message: "Login Succesfully",
-          userid: login.id,
-          username: login.username,
           name: login.name,
+          username: login.username,
           id_level: login.id_level,
           token: token,
           expiresIn: expirationDate,
