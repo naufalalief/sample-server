@@ -20,10 +20,7 @@ module.exports = {
         const expired = "1d";
         const token = jwt.sign(
           {
-            name: login.name,
-            username: login.username,
-            id: login.id,
-            id_level: login.id_level,
+            id_user: login.id,
             lastChanged: login.updatedAt,
           },
           process.env.JWT_KEY,
@@ -36,9 +33,6 @@ module.exports = {
         res.status(200).json({
           message: "Login Succesfully",
           id_user: login.id,
-          username: login.username,
-          name: login.name,
-          id_level: login.id_level,
           token: token,
           expiresIn: expirationDate,
         });
