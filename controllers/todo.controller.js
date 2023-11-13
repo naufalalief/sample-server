@@ -62,7 +62,7 @@ module.exports = {
           message: "all field must be filled",
         });
       }
-      const data = await Todo.update(
+      await Todo.update(
         {
           name,
           isdone,
