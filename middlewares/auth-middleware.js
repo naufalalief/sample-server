@@ -1,9 +1,8 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const { User } = require("../models");
 const key = process.env.JWT_KEY;
 
-const authMiddleware = async (req, res, next) => {
+const authMiddleware = (req, res, next) => {
   const header = req.headers.authorization;
 
   if (!header) {
@@ -21,17 +20,7 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, key);
-    const user = await User.findOne({
-      where: {
-        id: payload.id,
-      },
-    });
-    if (!user || user.updatedAt > payload.lastChanged) {
-      return res.status(403).json({
-        message: "invalid token",
-      });
-    }
-    req.user = user;
+    req.payload = payload;
 
     next();
   } catch (error) {

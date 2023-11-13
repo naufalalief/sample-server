@@ -13,10 +13,4 @@ route.get("/", (req, res) => {
 route.use("/users", authMiddleware, isAdmin, userRoute);
 route.use("/todos", authMiddleware, todoRoute);
 route.use("/auth", require("./auth.route"));
-route.get("/verify", authMiddleware, (req, res) => {
-  res.json({
-    message: "valid token",
-    token: req.headers.authorization.split(" ")[1],
-  });
-});
 module.exports = route;
