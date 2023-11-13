@@ -7,6 +7,7 @@ const {
   updateData,
   binData,
   createData,
+  getAllDatas,
 } = require("../controllers/todo.controller");
 route.get("/admin/todolists", getAllDatas);
 route.get("/", getAllData);
