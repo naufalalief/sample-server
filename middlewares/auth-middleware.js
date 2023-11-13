@@ -31,7 +31,7 @@ const authMiddleware = async (req, res, next) => {
         message: "invalid token",
       });
     }
-    req.payload = payload;
+    req.user = user;
 
     next();
   } catch (error) {
