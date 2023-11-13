@@ -125,6 +125,7 @@ paths:
                     description: "Message of error"
                 example:
                   message: "Register failed"
+
   /todos/admin/todolists:
     get:
       tags:
