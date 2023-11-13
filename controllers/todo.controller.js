@@ -76,7 +76,12 @@ module.exports = {
       );
       res.status(200).json({
         message: "data updated successfully",
-        data: data,
+        data: {
+          id,
+          name,
+          isdone,
+          id_user,
+        },
       });
     } catch (error) {
       console.log(error);
