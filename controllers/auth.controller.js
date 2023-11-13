@@ -24,6 +24,7 @@ module.exports = {
             username: login.username,
             id: login.id,
             id_level: login.id_level,
+            lastChanged: login.updatedAt,
           },
           process.env.JWT_KEY,
           {
