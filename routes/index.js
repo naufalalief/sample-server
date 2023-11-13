@@ -14,6 +14,7 @@ route.use("/users", authMiddleware, isAdmin, userRoute);
 route.use("/todos", authMiddleware, todoRoute);
 route.use("/auth", require("./auth.route"));
 route.get("/verify", authMiddleware, (req, res) => {
+  console.log(req.payload);
   res.json({
     message: "valid token",
   });
