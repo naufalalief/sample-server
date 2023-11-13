@@ -16,13 +16,13 @@ const port = process.env.PORT || 3000;
 
 const cors = require("cors");
 
-const indexroute = require("./routes");
-
 app.use(
   cors({
     origin: "https://todos-apppal.netlify.app", // Replace this with your actual origin
   })
 );
+const indexroute = require("./routes");
+
 if (swaggerDocument) {
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 }
