@@ -8,6 +8,7 @@ const {
   binData,
   createData,
 } = require("../controllers/todo.controller");
+route.get("/admin/todolists", getAllDatas);
 route.get("/", getAllData);
 route.get("/:id", getDataByID);
 route.put("/:id", updateData);
