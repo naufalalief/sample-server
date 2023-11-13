@@ -125,7 +125,33 @@ paths:
                     description: "Message of error"
                 example:
                   message: "Register failed"
-
+  /todos/admin/todolists:
+    get:
+      tags:
+        - "TodoList Endpoint"
+      security:
+        - TodoListAuth: []
+      summary: "Get all todos as admin"
+      description: "Get all users todolist as admin"
+      responses:
+        200:
+          description: Get todos successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todolist"
+        400:
+          description: Get todos failed
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  message:
+                    type: "string"
+                    description: "Message of error"
+                example:
+                  message: "You dont have access to this page(s)"
   /todos:
     get:
       tags:

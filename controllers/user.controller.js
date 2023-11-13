@@ -86,27 +86,4 @@ module.exports = {
       console.log(error);
     }
   },
-  createData: async (req, res) => {
-    try {
-      const { name, username, email, password } = req.body;
-      const data = await User.create({
-        name,
-        username,
-        email,
-        password,
-      });
-      if (!name || !username || !email || !password) {
-        res.status(400).send({
-          message: "all field must be filled",
-        });
-      } else {
-        res.status(201).send({
-          message: "create data",
-          data,
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  },
 };
