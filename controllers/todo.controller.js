@@ -1,17 +1,6 @@
 const { Todo } = require("../models");
 
 module.exports = {
-  getAllDatas: async (req, res) => {
-    try {
-      const data = await Todo.findAll();
-      res.status(200).json({
-        message: "get all data",
-        data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  },
   getAllData: async (req, res) => {
     try {
       const userId = req.payload.id;
@@ -51,7 +40,7 @@ module.exports = {
       const { id } = req.params;
       const id_user = req.payload.id;
       const { name, isdone } = req.body;
-      console.log(id, id_user, name, isdone);
+      console.log(id, id_user, name, isdone)
       if (req.payload.id !== id_user) {
         return res.status(401).json({
           message: "you are not authorized",
